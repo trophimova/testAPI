@@ -8,24 +8,19 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
-public class GetTest {
-
-    private final String apiKey = "6ed2c561862f4fd39f4131cc0efca006";
-
+public class GetTest extends AbstractTest{
 
     @Test
     void getRecipeOfPizzaWithBodyChecksAfterRequestPositiveTest() {
-        given()
-                .queryParam("apiKey", apiKey)
+        given().spec(requestSpecification)
                 .queryParam("query", "pizza")
                 .queryParam("excludeCuisine", "Italian")
                 .when()
                 .get("https://api.spoonacular.com/recipes/complexSearch")
                 .then()
-                .statusCode(200);
+                .spec(responseSpecification);
 
-        JsonPath response = given()
-                .queryParam("apiKey", apiKey)
+        JsonPath response = given().spec(requestSpecification)
                 .queryParam("query", "pizza")
                 .queryParam("excludeCuisine", "Italian")
                 .when()
@@ -38,17 +33,15 @@ public class GetTest {
 
     @Test
     void getRecipeOfPastaWithBodyChecksAfterRequestPositiveTest() {
-        given()
-                .queryParam("apiKey", apiKey)
+        given().spec(requestSpecification)
                 .queryParam("query", "pasta")
                 .queryParam("diet", "Pescetarian")
                 .when()
                 .get("https://api.spoonacular.com/recipes/complexSearch")
                 .then()
-                .statusCode(200);
+                .spec(responseSpecification);
 
-        JsonPath response = given()
-                .queryParam("apiKey", apiKey)
+        JsonPath response = given().spec(requestSpecification)
                 .queryParam("query", "pasta")
                 .queryParam("diet", "Pescetarian")
                 .when()
@@ -61,17 +54,15 @@ public class GetTest {
 
     @Test
     void getRecipeOfLasagnaWithBodyChecksAfterRequestPositiveTest() {
-        given()
-                .queryParam("apiKey", apiKey)
+        given().spec(requestSpecification)
                 .queryParam("query", "lasagna")
                 .queryParam("maxCalories", "350")
                 .when()
                 .get("https://api.spoonacular.com/recipes/complexSearch")
                 .then()
-                .statusCode(200);
+                .spec(responseSpecification);
 
-        JsonPath response = given()
-                .queryParam("apiKey", apiKey)
+        JsonPath response = given().spec(requestSpecification)
                 .queryParam("query", "lasagna")
                 .queryParam("maxCalories", "350")
                 .when()
@@ -84,17 +75,15 @@ public class GetTest {
 
     @Test
     void getRecipeOfCaesarSaladWithBodyChecksAfterRequestPositiveTest() {
-        given()
-                .queryParam("apiKey", apiKey)
+        given().spec(requestSpecification)
                 .queryParam("query", "caesar salad")
                 .queryParam("diet", "Gluten Free")
                 .when()
                 .get("https://api.spoonacular.com/recipes/complexSearch")
                 .then()
-                .statusCode(200);
+                .spec(responseSpecification);
 
-        JsonPath response = given()
-                .queryParam("apiKey", apiKey)
+        JsonPath response = given().spec(requestSpecification)
                 .queryParam("query", "caesar salad")
                 .queryParam("diet", "Gluten Free")
                 .when()
@@ -107,17 +96,15 @@ public class GetTest {
 
     @Test
     void getRecipeOfSushiWithBodyChecksAfterRequestPositiveTest() {
-        given()
-                .queryParam("apiKey", apiKey)
+        given().spec(requestSpecification)
                 .queryParam("query", "sushi")
                 .queryParam("cuisine", "Japanese")
                 .when()
                 .get("https://api.spoonacular.com/recipes/complexSearch")
                 .then()
-                .statusCode(200);
+                .spec(responseSpecification);
 
-        JsonPath response = given()
-                .queryParam("apiKey", apiKey)
+        JsonPath response = given().spec(requestSpecification)
                 .queryParam("query", "sushi")
                 .queryParam("cuisine", "Japanese")
                 .when()

@@ -7,22 +7,18 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class PostTest {
-
-    private final String apiKey = "6ed2c561862f4fd39f4131cc0efca006";
+public class PostTest extends AbstractTest{
 
     @Test
     void classifyCuisinePizzaTest() {
-        given()
-                .queryParam("apiKey", apiKey)
+        given().spec(requestSpecification)
                 .queryParam("title", "Pizza")
                 .when()
                 .post("https://api.spoonacular.com/recipes/cuisine")
                 .then()
-                .statusCode(200);
+                .spec(responseSpecification);
 
-        JsonPath response = given()
-                .queryParam("apiKey", apiKey)
+        JsonPath response = given().spec(requestSpecification)
                 .queryParam("title", "Pizza")
                 .when()
                 .post("https://api.spoonacular.com/recipes/cuisine")
@@ -36,16 +32,14 @@ public class PostTest {
 
     @Test
     void classifyCuisineSushiTest() {
-        given()
-                .queryParam("apiKey", apiKey)
+        given().spec(requestSpecification)
                 .queryParam("title", "Sushi")
                 .when()
                 .post("https://api.spoonacular.com/recipes/cuisine")
                 .then()
-                .statusCode(200);
+                .spec(responseSpecification);
 
-        JsonPath response = given()
-                .queryParam("apiKey", apiKey)
+        JsonPath response = given().spec(requestSpecification)
                 .queryParam("title", "Sushi")
                 .when()
                 .post("https://api.spoonacular.com/recipes/cuisine")
@@ -59,16 +53,14 @@ public class PostTest {
 
     @Test
     void classifyCuisineLasagnaTest() {
-        given()
-                .queryParam("apiKey", apiKey)
+        given().spec(requestSpecification)
                 .queryParam("title", "Lasagna")
                 .when()
                 .post("https://api.spoonacular.com/recipes/cuisine")
                 .then()
-                .statusCode(200);
+                .spec(responseSpecification);
 
-        JsonPath response = given()
-                .queryParam("apiKey", apiKey)
+        JsonPath response = given().spec(requestSpecification)
                 .queryParam("title", "Lasagna")
                 .when()
                 .post("https://api.spoonacular.com/recipes/cuisine")
@@ -82,16 +74,14 @@ public class PostTest {
 
     @Test
     void classifyCuisineCaesarSaladTest() {
-        given()
-                .queryParam("apiKey", apiKey)
+        given().spec(requestSpecification)
                 .queryParam("title", "caesar salad")
                 .when()
                 .post("https://api.spoonacular.com/recipes/cuisine")
                 .then()
-                .statusCode(200);
+                .spec(responseSpecification);
 
-        JsonPath response = given()
-                .queryParam("apiKey", apiKey)
+        JsonPath response = given().spec(requestSpecification)
                 .queryParam("title", "caesar salad")
                 .when()
                 .post("https://api.spoonacular.com/recipes/cuisine")
@@ -105,16 +95,14 @@ public class PostTest {
 
     @Test
     void classifyCuisineChineseBbqPorkRibsTest() {
-        given()
-                .queryParam("apiKey", apiKey)
+        given().spec(requestSpecification)
                 .queryParam("title", "Chinese Bbq Pork Ribs")
                 .when()
                 .post("https://api.spoonacular.com/recipes/cuisine")
                 .then()
-                .statusCode(200);
+                .spec(responseSpecification);
 
-        JsonPath response = given()
-                .queryParam("apiKey", apiKey)
+        JsonPath response = given().spec(requestSpecification)
                 .queryParam("title", "Chinese Bbq Pork Ribs")
                 .when()
                 .post("https://api.spoonacular.com/recipes/cuisine")

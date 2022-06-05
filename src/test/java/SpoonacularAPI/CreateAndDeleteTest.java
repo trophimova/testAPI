@@ -4,15 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class CreateAndDeleteTest {
-
-    private final String apiKey = "6ed2c561862f4fd39f4131cc0efca006";
+public class CreateAndDeleteTest extends AbstractTest{
 
     @Test
     void MealPlanIngredientsTest() {
-        String id = given()
+        String id = given().spec(requestSpecification)
                 .queryParam("hash", "01403f920bebdc9eaad975ab4912a26d15bb7d72")
-                .queryParam("apiKey", apiKey)
                 .body("{\n"
                         + " \"date\": 1653217200,\n"
                         + " \"slot\": 1,\n"
@@ -29,25 +26,23 @@ public class CreateAndDeleteTest {
                 .when()
                 .post("https://api.spoonacular.com/mealplanner/anna98/items")
                 .then()
-                .statusCode(200)
+                .spec(responseSpecification)
                 .extract()
                 .jsonPath()
                 .get("id")
                 .toString();
 
-        given()
+        given().spec(requestSpecification)
                 .queryParam("hash", "01403f920bebdc9eaad975ab4912a26d15bb7d72")
-                .queryParam("apiKey", apiKey)
                 .delete("https://api.spoonacular.com/mealplanner/anna98/items/" + id)
                 .then()
-                .statusCode(200);
+                .spec(responseSpecification);
     }
 
     @Test
     void MealPlanRecipeTest() {
-        String id = given()
+        String id = given().spec(requestSpecification)
                 .queryParam("hash", "01403f920bebdc9eaad975ab4912a26d15bb7d72")
-                .queryParam("apiKey", apiKey)
                 .body("{\n"
                         + " \"date\": 1653303600,\n"
                         + " \"slot\": 1,\n"
@@ -63,15 +58,14 @@ public class CreateAndDeleteTest {
                 .when()
                 .post("https://api.spoonacular.com/mealplanner/anna98/items")
                 .then()
-                .statusCode(200)
+                .spec(responseSpecification)
                 .extract()
                 .jsonPath()
                 .get("id")
                 .toString();
 
-        given()
+        given().spec(requestSpecification)
                 .queryParam("hash", "01403f920bebdc9eaad975ab4912a26d15bb7d72")
-                .queryParam("apiKey", apiKey)
                 .delete("https://api.spoonacular.com/mealplanner/anna98/items/" + id)
                 .then()
                 .statusCode(200);
